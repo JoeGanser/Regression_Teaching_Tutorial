@@ -397,7 +397,7 @@ Now lets scatter plot each key feature compared to the sale price. This will all
 
 
 
-![png]https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/(output_31_3.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_3.png)
 
 
 
