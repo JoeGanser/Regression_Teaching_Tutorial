@@ -220,7 +220,7 @@ Now lets code up a script to create a bar chart that counts the number of missin
 ```
 
 
-![png](output_16_0.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_16_0.png)
 
 
 ### FEATURE ENGINEERING AND DATA CLEANING
@@ -287,7 +287,7 @@ Now that we've engineered our features, we should create a dataframe or series t
 ```
 
 
-![png](output_27_0.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_27_0.png)
 
 
     Max Correlation:  1.0
@@ -385,107 +385,107 @@ Now lets scatter plot each key feature compared to the sale price. This will all
 ```
 
 
-![png](output_31_0.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_0.png)
 
 
 
-![png](output_31_1.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_1.png)
 
 
 
-![png](output_31_2.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_2.png)
 
 
 
-![png](output_31_3.png)
+![png]https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/(output_31_3.png)
 
 
 
-![png](output_31_4.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_4.png)
 
 
 
-![png](output_31_5.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_5.png)
 
 
 
-![png](output_31_6.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_6.png)
 
 
 
-![png](output_31_7.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_7.png)
 
 
 
-![png](output_31_8.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_8.png)
 
 
 
-![png](output_31_9.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_9.png)
 
 
 
-![png](output_31_10.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_10.png)
 
 
 
-![png](output_31_11.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_11.png)
 
 
 
-![png](output_31_12.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_12.png)
 
 
 
-![png](output_31_13.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_13.png)
 
 
 
-![png](output_31_14.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_14.png)
 
 
 
-![png](output_31_15.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_15.png)
 
 
 
-![png](output_31_16.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_16.png)
 
 
 
-![png](output_31_17.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_17.png)
 
 
 
-![png](output_31_18.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_18.png)
 
 
 
-![png](output_31_19.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_19.png)
 
 
 
-![png](output_31_20.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_20.png)
 
 
 
-![png](output_31_21.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_21.png)
 
 
 
-![png](output_31_22.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_22.png)
 
 
 
-![png](output_31_23.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_23.png)
 
 
 
-![png](output_31_24.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_24.png)
 
 
 
-![png](output_31_25.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_25.png)
 
 
 Its very obvious that some of these features are very skewed. Moreover, the magnitude of some of the features are on significantly different scales. For example, the values for `GarageFinish_Unf` have a range of 0 and 1, but the feature `GarageYrBuilt` ranges from 1900 to 2010. Machine learning models work best with unskewed data which is all on a similar scale.
@@ -514,11 +514,11 @@ This accomplishes two tasks:
 ```
 
 
-![png](output_35_0.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_35_0.png)
 
 
 
-![png](output_35_1.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_35_1.png)
 
 
 Now do the same thing again, but transform the `SalePrice` data with the function `np.log1p(data)`.
@@ -529,11 +529,11 @@ Now do the same thing again, but transform the `SalePrice` data with the functio
 ```
 
 
-![png](output_37_0.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_37_0.png)
 
 
 
-![png](output_37_1.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_37_1.png)
 
 
 As we can see the transformation of `np.log1p(y)` makes our SalePrice data much more normal and minimizes skew. This is better for linear regression.
@@ -566,7 +566,7 @@ If you did everything right, it should the plots should look like the next one:
 
 
 
-![png](output_40_1.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_40_1.png)
 
 
 # MODEL DEPLOYMENT AND TESTING
@@ -588,7 +588,7 @@ Heres what we do next:
 
 
 
-![png](output_42_1.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_42_1.png)
 
 
 
@@ -600,7 +600,7 @@ Heres what we do next:
 
 
 
-![png](output_43_1.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_43_1.png)
 
 
 Lastly, make a horizontal bar plot of the coefficients in the ridge model.
@@ -615,7 +615,7 @@ Lastly, make a horizontal bar plot of the coefficients in the ridge model.
 
 
 
-![png](output_45_1.png)
+![png](https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_45_1.png)
 
 
 # Sources & Credits
