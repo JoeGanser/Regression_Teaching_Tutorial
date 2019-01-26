@@ -31,6 +31,10 @@ Lets start by loading the dataset, and observing it's dimensions. Our target var
 
 ```python
 #Solution
+import pandas as pd
+import warnings
+warnings.filterwarnings('ignore')
+df = pd.read_csv('train.csv')
 ```
 
 Now split the data set into a predictor table (`X`) and a target table `y`
@@ -38,192 +42,28 @@ Now split the data set into a predictor table (`X`) and a target table `y`
 
 ```python
 #Solution
+X = df.drop('SalePrice',axis=1)
+y = df['SalePrice']
 ```
 
 Now look at the head of the predictor table, and print it's shape.
 
 
 ```python
-#Code Your Solution Here
-```
-
-
-```python
-#Don't alter this cell so you can see what your answer should look like.
+#Solution
+print(X.shape)
 ```
 
     (1460, 80)
 
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Id</th>
-      <th>MSSubClass</th>
-      <th>MSZoning</th>
-      <th>LotFrontage</th>
-      <th>LotArea</th>
-      <th>Street</th>
-      <th>Alley</th>
-      <th>LotShape</th>
-      <th>LandContour</th>
-      <th>Utilities</th>
-      <th>...</th>
-      <th>ScreenPorch</th>
-      <th>PoolArea</th>
-      <th>PoolQC</th>
-      <th>Fence</th>
-      <th>MiscFeature</th>
-      <th>MiscVal</th>
-      <th>MoSold</th>
-      <th>YrSold</th>
-      <th>SaleType</th>
-      <th>SaleCondition</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>60</td>
-      <td>RL</td>
-      <td>65.0</td>
-      <td>8450</td>
-      <td>Pave</td>
-      <td>NaN</td>
-      <td>Reg</td>
-      <td>Lvl</td>
-      <td>AllPub</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>2</td>
-      <td>2008</td>
-      <td>WD</td>
-      <td>Normal</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>20</td>
-      <td>RL</td>
-      <td>80.0</td>
-      <td>9600</td>
-      <td>Pave</td>
-      <td>NaN</td>
-      <td>Reg</td>
-      <td>Lvl</td>
-      <td>AllPub</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>5</td>
-      <td>2007</td>
-      <td>WD</td>
-      <td>Normal</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>60</td>
-      <td>RL</td>
-      <td>68.0</td>
-      <td>11250</td>
-      <td>Pave</td>
-      <td>NaN</td>
-      <td>IR1</td>
-      <td>Lvl</td>
-      <td>AllPub</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>9</td>
-      <td>2008</td>
-      <td>WD</td>
-      <td>Normal</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>70</td>
-      <td>RL</td>
-      <td>60.0</td>
-      <td>9550</td>
-      <td>Pave</td>
-      <td>NaN</td>
-      <td>IR1</td>
-      <td>Lvl</td>
-      <td>AllPub</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>2</td>
-      <td>2006</td>
-      <td>WD</td>
-      <td>Abnorml</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>60</td>
-      <td>RL</td>
-      <td>84.0</td>
-      <td>14260</td>
-      <td>Pave</td>
-      <td>NaN</td>
-      <td>IR1</td>
-      <td>Lvl</td>
-      <td>AllPub</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>12</td>
-      <td>2008</td>
-      <td>WD</td>
-      <td>Normal</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 80 columns</p>
-</div>
+Id|MSSubClass|MSZoning|LotFrontage|LotArea|Street|Alley|LotShape|LandContour|Utilities|LotConfig|LandSlope|Neighborhood|Condition1|Condition2|BldgType|HouseStyle|OverallQual|OverallCond|YearBuilt|YearRemodAdd|RoofStyle|RoofMatl|Exterior1st|Exterior2nd|MasVnrType|MasVnrArea|ExterQual|ExterCond|Foundation|BsmtQual|BsmtCond|BsmtExposure|BsmtFinType1|BsmtFinSF1|BsmtFinType2|BsmtFinSF2|BsmtUnfSF|TotalBsmtSF|Heating|HeatingQC|CentralAir|Electrical|1stFlrSF|2ndFlrSF|LowQualFinSF|GrLivArea|BsmtFullBath|BsmtHalfBath|FullBath|HalfBath|BedroomAbvGr|KitchenAbvGr|KitchenQual|TotRmsAbvGrd|Functional|Fireplaces|FireplaceQu|GarageType|GarageYrBlt|GarageFinish|GarageCars|GarageArea|GarageQual|GarageCond|PavedDrive|WoodDeckSF|OpenPorchSF|EnclosedPorch|3SsnPorch|ScreenPorch|PoolArea|PoolQC|Fence|MiscFeature|MiscVal|MoSold|YrSold|SaleType|SaleCondition
+---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+1|60|RL|65.0|8450|Pave||Reg|Lvl|AllPub|Inside|Gtl|CollgCr|Norm|Norm|1Fam|2Story|7|5|2003|2003|Gable|CompShg|VinylSd|VinylSd|BrkFace|196.0|Gd|TA|PConc|Gd|TA|No|GLQ|706|Unf|0|150|856|GasA|Ex|Y|SBrkr|856|854|0|1710|1|0|2|1|3|1|Gd|8|Typ|0||Attchd|2003.0|RFn|2|548|TA|TA|Y|0|61|0|0|0|0||||0|2|2008|WD|Normal
+2|20|RL|80.0|9600|Pave||Reg|Lvl|AllPub|FR2|Gtl|Veenker|Feedr|Norm|1Fam|1Story|6|8|1976|1976|Gable|CompShg|MetalSd|MetalSd|None|0.0|TA|TA|CBlock|Gd|TA|Gd|ALQ|978|Unf|0|284|1262|GasA|Ex|Y|SBrkr|1262|0|0|1262|0|1|2|0|3|1|TA|6|Typ|1|TA|Attchd|1976.0|RFn|2|460|TA|TA|Y|298|0|0|0|0|0||||0|5|2007|WD|Normal
+3|60|RL|68.0|11250|Pave||IR1|Lvl|AllPub|Inside|Gtl|CollgCr|Norm|Norm|1Fam|2Story|7|5|2001|2002|Gable|CompShg|VinylSd|VinylSd|BrkFace|162.0|Gd|TA|PConc|Gd|TA|Mn|GLQ|486|Unf|0|434|920|GasA|Ex|Y|SBrkr|920|866|0|1786|1|0|2|1|3|1|Gd|6|Typ|1|TA|Attchd|2001.0|RFn|2|608|TA|TA|Y|0|42|0|0|0|0||||0|9|2008|WD|Normal
+4|70|RL|60.0|9550|Pave||IR1|Lvl|AllPub|Corner|Gtl|Crawfor|Norm|Norm|1Fam|2Story|7|5|1915|1970|Gable|CompShg|Wd Sdng|Wd Shng|None|0.0|TA|TA|BrkTil|TA|Gd|No|ALQ|216|Unf|0|540|756|GasA|Gd|Y|SBrkr|961|756|0|1717|1|0|1|0|3|1|Gd|7|Typ|1|Gd|Detchd|1998.0|Unf|3|642|TA|TA|Y|0|35|272|0|0|0||||0|2|2006|WD|Abnorml
+5|60|RL|84.0|14260|Pave||IR1|Lvl|AllPub|FR2|Gtl|NoRidge|Norm|Norm|1Fam|2Story|8|5|2000|2000|Gable|CompShg|VinylSd|VinylSd|BrkFace|350.0|Gd|TA|PConc|Gd|TA|Av|GLQ|655|Unf|0|490|1145|GasA|Ex|Y|SBrkr|1145|1053|0|2198|1|0|2|1|4|1|Gd|9|Typ|1|TA|Attchd|2000.0|RFn|3|836|TA|TA|Y|192|84|0|0|0|0||||0|12|2008|WD|Normal
 
 
 
@@ -231,12 +71,7 @@ Now use the `.info()` method to find that datatypes on all of the columns (inclu
 
 
 ```python
-#Code Your Solution Here
-```
-
-
-```python
-#Don't alter this cell so you can see what your answer should look like.
+df.info()
 ```
 
     <class 'pandas.core.frame.DataFrame'>
@@ -331,467 +166,49 @@ Now use the `.describe()` method on the full data set to get the min,max,mean an
 
 
 ```python
-#Code your solution here.
+#Code your solution here. It should look like the following;
 ```
 
-
-```python
-#Don't alter this cell so you can see what your answer should look like.
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>count</th>
-      <th>mean</th>
-      <th>std</th>
-      <th>min</th>
-      <th>25%</th>
-      <th>50%</th>
-      <th>75%</th>
-      <th>max</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Id</th>
-      <td>1460.0</td>
-      <td>730.500000</td>
-      <td>421.610009</td>
-      <td>1.0</td>
-      <td>365.75</td>
-      <td>730.5</td>
-      <td>1095.25</td>
-      <td>1460.0</td>
-    </tr>
-    <tr>
-      <th>MSSubClass</th>
-      <td>1460.0</td>
-      <td>56.897260</td>
-      <td>42.300571</td>
-      <td>20.0</td>
-      <td>20.00</td>
-      <td>50.0</td>
-      <td>70.00</td>
-      <td>190.0</td>
-    </tr>
-    <tr>
-      <th>LotFrontage</th>
-      <td>1201.0</td>
-      <td>70.049958</td>
-      <td>24.284752</td>
-      <td>21.0</td>
-      <td>59.00</td>
-      <td>69.0</td>
-      <td>80.00</td>
-      <td>313.0</td>
-    </tr>
-    <tr>
-      <th>LotArea</th>
-      <td>1460.0</td>
-      <td>10516.828082</td>
-      <td>9981.264932</td>
-      <td>1300.0</td>
-      <td>7553.50</td>
-      <td>9478.5</td>
-      <td>11601.50</td>
-      <td>215245.0</td>
-    </tr>
-    <tr>
-      <th>OverallQual</th>
-      <td>1460.0</td>
-      <td>6.099315</td>
-      <td>1.382997</td>
-      <td>1.0</td>
-      <td>5.00</td>
-      <td>6.0</td>
-      <td>7.00</td>
-      <td>10.0</td>
-    </tr>
-    <tr>
-      <th>OverallCond</th>
-      <td>1460.0</td>
-      <td>5.575342</td>
-      <td>1.112799</td>
-      <td>1.0</td>
-      <td>5.00</td>
-      <td>5.0</td>
-      <td>6.00</td>
-      <td>9.0</td>
-    </tr>
-    <tr>
-      <th>YearBuilt</th>
-      <td>1460.0</td>
-      <td>1971.267808</td>
-      <td>30.202904</td>
-      <td>1872.0</td>
-      <td>1954.00</td>
-      <td>1973.0</td>
-      <td>2000.00</td>
-      <td>2010.0</td>
-    </tr>
-    <tr>
-      <th>YearRemodAdd</th>
-      <td>1460.0</td>
-      <td>1984.865753</td>
-      <td>20.645407</td>
-      <td>1950.0</td>
-      <td>1967.00</td>
-      <td>1994.0</td>
-      <td>2004.00</td>
-      <td>2010.0</td>
-    </tr>
-    <tr>
-      <th>MasVnrArea</th>
-      <td>1452.0</td>
-      <td>103.685262</td>
-      <td>181.066207</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>166.00</td>
-      <td>1600.0</td>
-    </tr>
-    <tr>
-      <th>BsmtFinSF1</th>
-      <td>1460.0</td>
-      <td>443.639726</td>
-      <td>456.098091</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>383.5</td>
-      <td>712.25</td>
-      <td>5644.0</td>
-    </tr>
-    <tr>
-      <th>BsmtFinSF2</th>
-      <td>1460.0</td>
-      <td>46.549315</td>
-      <td>161.319273</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>1474.0</td>
-    </tr>
-    <tr>
-      <th>BsmtUnfSF</th>
-      <td>1460.0</td>
-      <td>567.240411</td>
-      <td>441.866955</td>
-      <td>0.0</td>
-      <td>223.00</td>
-      <td>477.5</td>
-      <td>808.00</td>
-      <td>2336.0</td>
-    </tr>
-    <tr>
-      <th>TotalBsmtSF</th>
-      <td>1460.0</td>
-      <td>1057.429452</td>
-      <td>438.705324</td>
-      <td>0.0</td>
-      <td>795.75</td>
-      <td>991.5</td>
-      <td>1298.25</td>
-      <td>6110.0</td>
-    </tr>
-    <tr>
-      <th>1stFlrSF</th>
-      <td>1460.0</td>
-      <td>1162.626712</td>
-      <td>386.587738</td>
-      <td>334.0</td>
-      <td>882.00</td>
-      <td>1087.0</td>
-      <td>1391.25</td>
-      <td>4692.0</td>
-    </tr>
-    <tr>
-      <th>2ndFlrSF</th>
-      <td>1460.0</td>
-      <td>346.992466</td>
-      <td>436.528436</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>728.00</td>
-      <td>2065.0</td>
-    </tr>
-    <tr>
-      <th>LowQualFinSF</th>
-      <td>1460.0</td>
-      <td>5.844521</td>
-      <td>48.623081</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>572.0</td>
-    </tr>
-    <tr>
-      <th>GrLivArea</th>
-      <td>1460.0</td>
-      <td>1515.463699</td>
-      <td>525.480383</td>
-      <td>334.0</td>
-      <td>1129.50</td>
-      <td>1464.0</td>
-      <td>1776.75</td>
-      <td>5642.0</td>
-    </tr>
-    <tr>
-      <th>BsmtFullBath</th>
-      <td>1460.0</td>
-      <td>0.425342</td>
-      <td>0.518911</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>1.00</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>BsmtHalfBath</th>
-      <td>1460.0</td>
-      <td>0.057534</td>
-      <td>0.238753</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>FullBath</th>
-      <td>1460.0</td>
-      <td>1.565068</td>
-      <td>0.550916</td>
-      <td>0.0</td>
-      <td>1.00</td>
-      <td>2.0</td>
-      <td>2.00</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>HalfBath</th>
-      <td>1460.0</td>
-      <td>0.382877</td>
-      <td>0.502885</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>1.00</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>BedroomAbvGr</th>
-      <td>1460.0</td>
-      <td>2.866438</td>
-      <td>0.815778</td>
-      <td>0.0</td>
-      <td>2.00</td>
-      <td>3.0</td>
-      <td>3.00</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>KitchenAbvGr</th>
-      <td>1460.0</td>
-      <td>1.046575</td>
-      <td>0.220338</td>
-      <td>0.0</td>
-      <td>1.00</td>
-      <td>1.0</td>
-      <td>1.00</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>TotRmsAbvGrd</th>
-      <td>1460.0</td>
-      <td>6.517808</td>
-      <td>1.625393</td>
-      <td>2.0</td>
-      <td>5.00</td>
-      <td>6.0</td>
-      <td>7.00</td>
-      <td>14.0</td>
-    </tr>
-    <tr>
-      <th>Fireplaces</th>
-      <td>1460.0</td>
-      <td>0.613014</td>
-      <td>0.644666</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>1.0</td>
-      <td>1.00</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>GarageYrBlt</th>
-      <td>1379.0</td>
-      <td>1978.506164</td>
-      <td>24.689725</td>
-      <td>1900.0</td>
-      <td>1961.00</td>
-      <td>1980.0</td>
-      <td>2002.00</td>
-      <td>2010.0</td>
-    </tr>
-    <tr>
-      <th>GarageCars</th>
-      <td>1460.0</td>
-      <td>1.767123</td>
-      <td>0.747315</td>
-      <td>0.0</td>
-      <td>1.00</td>
-      <td>2.0</td>
-      <td>2.00</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>GarageArea</th>
-      <td>1460.0</td>
-      <td>472.980137</td>
-      <td>213.804841</td>
-      <td>0.0</td>
-      <td>334.50</td>
-      <td>480.0</td>
-      <td>576.00</td>
-      <td>1418.0</td>
-    </tr>
-    <tr>
-      <th>WoodDeckSF</th>
-      <td>1460.0</td>
-      <td>94.244521</td>
-      <td>125.338794</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>168.00</td>
-      <td>857.0</td>
-    </tr>
-    <tr>
-      <th>OpenPorchSF</th>
-      <td>1460.0</td>
-      <td>46.660274</td>
-      <td>66.256028</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>25.0</td>
-      <td>68.00</td>
-      <td>547.0</td>
-    </tr>
-    <tr>
-      <th>EnclosedPorch</th>
-      <td>1460.0</td>
-      <td>21.954110</td>
-      <td>61.119149</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>552.0</td>
-    </tr>
-    <tr>
-      <th>3SsnPorch</th>
-      <td>1460.0</td>
-      <td>3.409589</td>
-      <td>29.317331</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>508.0</td>
-    </tr>
-    <tr>
-      <th>ScreenPorch</th>
-      <td>1460.0</td>
-      <td>15.060959</td>
-      <td>55.757415</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>480.0</td>
-    </tr>
-    <tr>
-      <th>PoolArea</th>
-      <td>1460.0</td>
-      <td>2.758904</td>
-      <td>40.177307</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>738.0</td>
-    </tr>
-    <tr>
-      <th>MiscVal</th>
-      <td>1460.0</td>
-      <td>43.489041</td>
-      <td>496.123024</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>15500.0</td>
-    </tr>
-    <tr>
-      <th>MoSold</th>
-      <td>1460.0</td>
-      <td>6.321918</td>
-      <td>2.703626</td>
-      <td>1.0</td>
-      <td>5.00</td>
-      <td>6.0</td>
-      <td>8.00</td>
-      <td>12.0</td>
-    </tr>
-    <tr>
-      <th>YrSold</th>
-      <td>1460.0</td>
-      <td>2007.815753</td>
-      <td>1.328095</td>
-      <td>2006.0</td>
-      <td>2007.00</td>
-      <td>2008.0</td>
-      <td>2009.00</td>
-      <td>2010.0</td>
-    </tr>
-    <tr>
-      <th>SalePrice</th>
-      <td>1460.0</td>
-      <td>180921.195890</td>
-      <td>79442.502883</td>
-      <td>34900.0</td>
-      <td>129975.00</td>
-      <td>163000.0</td>
-      <td>214000.00</td>
-      <td>755000.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+count|mean|std|min|25%|50%|75%|max
+---|---|---|---|---|---|---|---
+1460.0|730.5|421.6100093688479|1.0|365.75|730.5|1095.25|1460.0
+1460.0|56.897260273972606|42.30057099381035|20.0|20.0|50.0|70.0|190.0
+1201.0|70.04995836802665|24.284751774483183|21.0|59.0|69.0|80.0|313.0
+1460.0|10516.828082191782|9981.264932379147|1300.0|7553.5|9478.5|11601.5|215245.0
+1460.0|6.0993150684931505|1.3829965467415923|1.0|5.0|6.0|7.0|10.0
+1460.0|5.575342465753424|1.1127993367127367|1.0|5.0|5.0|6.0|9.0
+1460.0|1971.267808219178|30.202904042525265|1872.0|1954.0|1973.0|2000.0|2010.0
+1460.0|1984.8657534246574|20.645406807709396|1950.0|1967.0|1994.0|2004.0|2010.0
+1452.0|103.68526170798899|181.06620658721818|0.0|0.0|0.0|166.0|1600.0
+1460.0|443.6397260273973|456.09809084092456|0.0|0.0|383.5|712.25|5644.0
+1460.0|46.54931506849315|161.31927280654057|0.0|0.0|0.0|0.0|1474.0
+1460.0|567.2404109589041|441.8669552924342|0.0|223.0|477.5|808.0|2336.0
+1460.0|1057.4294520547944|438.7053244594705|0.0|795.75|991.5|1298.25|6110.0
+1460.0|1162.626712328767|386.5877380410738|334.0|882.0|1087.0|1391.25|4692.0
+1460.0|346.99246575342465|436.5284358862591|0.0|0.0|0.0|728.0|2065.0
+1460.0|5.844520547945206|48.623081433519125|0.0|0.0|0.0|0.0|572.0
+1460.0|1515.463698630137|525.4803834232027|334.0|1129.5|1464.0|1776.75|5642.0
+1460.0|0.42534246575342466|0.5189106060897992|0.0|0.0|0.0|1.0|3.0
+1460.0|0.057534246575342465|0.23875264627920764|0.0|0.0|0.0|0.0|2.0
+1460.0|1.5650684931506849|0.5509158012954318|0.0|1.0|2.0|2.0|3.0
+1460.0|0.38287671232876713|0.5028853810928973|0.0|0.0|0.0|1.0|2.0
+1460.0|2.8664383561643834|0.8157780441442212|0.0|2.0|3.0|3.0|8.0
+1460.0|1.0465753424657533|0.22033819838402977|0.0|1.0|1.0|1.0|3.0
+1460.0|6.517808219178082|1.625393290584064|2.0|5.0|6.0|7.0|14.0
+1460.0|0.613013698630137|0.6446663863122344|0.0|0.0|1.0|1.0|3.0
+1379.0|1978.5061638868744|24.689724768590214|1900.0|1961.0|1980.0|2002.0|2010.0
+1460.0|1.7671232876712328|0.7473150101111116|0.0|1.0|2.0|2.0|4.0
+1460.0|472.9801369863014|213.80484145338076|0.0|334.5|480.0|576.0|1418.0
+1460.0|94.2445205479452|125.33879435172359|0.0|0.0|0.0|168.0|857.0
+1460.0|46.66027397260274|66.25602767664974|0.0|0.0|25.0|68.0|547.0
+1460.0|21.954109589041096|61.11914860172879|0.0|0.0|0.0|0.0|552.0
+1460.0|3.4095890410958902|29.317330556782203|0.0|0.0|0.0|0.0|508.0
+1460.0|15.060958904109588|55.757415281874486|0.0|0.0|0.0|0.0|480.0
+1460.0|2.758904109589041|40.17730694453043|0.0|0.0|0.0|0.0|738.0
+1460.0|43.489041095890414|496.1230244579311|0.0|0.0|0.0|0.0|15500.0
+1460.0|6.321917808219178|2.7036262083595197|1.0|5.0|6.0|8.0|12.0
+1460.0|2007.8157534246575|1.328095120552104|2006.0|2007.0|2008.0|2009.0|2010.0
+1460.0|180921.19589041095|79442.50288288663|34900.0|129975.0|163000.0|214000.0|755000.0
 
 
 
@@ -799,16 +216,11 @@ Now lets code up a script to create a bar chart that counts the number of missin
 
 
 ```python
-#Code your solution here.
+#Code your solution here. It should look like the following.
 ```
 
 
-```python
-#Don't alter this cell so you can see what your answer should look like.
-```
-
-
-![png](output_18_0.png)
+![png](output_16_0.png)
 
 
 ### FEATURE ENGINEERING AND DATA CLEANING
@@ -825,195 +237,26 @@ First, lets seperate the numerical predictors from the cateogircal (string) ones
 
 
 ```python
-#Code Your solution here
+#code your solution here
 ```
 
 Now lets look at the categorical features. Print the shape and display the head of the table.
 
 
 ```python
-#Code your solution here
-```
-
-
-```python
-#Don't alter this cell so you can see what your answer should look like.
+#Code your solution here, it should have the following output
 ```
 
     (1460, 43)
 
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>MSZoning</th>
-      <th>Street</th>
-      <th>Alley</th>
-      <th>LotShape</th>
-      <th>LandContour</th>
-      <th>Utilities</th>
-      <th>LotConfig</th>
-      <th>LandSlope</th>
-      <th>Neighborhood</th>
-      <th>Condition1</th>
-      <th>...</th>
-      <th>GarageType</th>
-      <th>GarageFinish</th>
-      <th>GarageQual</th>
-      <th>GarageCond</th>
-      <th>PavedDrive</th>
-      <th>PoolQC</th>
-      <th>Fence</th>
-      <th>MiscFeature</th>
-      <th>SaleType</th>
-      <th>SaleCondition</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>RL</td>
-      <td>Pave</td>
-      <td>NaN</td>
-      <td>Reg</td>
-      <td>Lvl</td>
-      <td>AllPub</td>
-      <td>Inside</td>
-      <td>Gtl</td>
-      <td>CollgCr</td>
-      <td>Norm</td>
-      <td>...</td>
-      <td>Attchd</td>
-      <td>RFn</td>
-      <td>TA</td>
-      <td>TA</td>
-      <td>Y</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>WD</td>
-      <td>Normal</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>RL</td>
-      <td>Pave</td>
-      <td>NaN</td>
-      <td>Reg</td>
-      <td>Lvl</td>
-      <td>AllPub</td>
-      <td>FR2</td>
-      <td>Gtl</td>
-      <td>Veenker</td>
-      <td>Feedr</td>
-      <td>...</td>
-      <td>Attchd</td>
-      <td>RFn</td>
-      <td>TA</td>
-      <td>TA</td>
-      <td>Y</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>WD</td>
-      <td>Normal</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>RL</td>
-      <td>Pave</td>
-      <td>NaN</td>
-      <td>IR1</td>
-      <td>Lvl</td>
-      <td>AllPub</td>
-      <td>Inside</td>
-      <td>Gtl</td>
-      <td>CollgCr</td>
-      <td>Norm</td>
-      <td>...</td>
-      <td>Attchd</td>
-      <td>RFn</td>
-      <td>TA</td>
-      <td>TA</td>
-      <td>Y</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>WD</td>
-      <td>Normal</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>RL</td>
-      <td>Pave</td>
-      <td>NaN</td>
-      <td>IR1</td>
-      <td>Lvl</td>
-      <td>AllPub</td>
-      <td>Corner</td>
-      <td>Gtl</td>
-      <td>Crawfor</td>
-      <td>Norm</td>
-      <td>...</td>
-      <td>Detchd</td>
-      <td>Unf</td>
-      <td>TA</td>
-      <td>TA</td>
-      <td>Y</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>WD</td>
-      <td>Abnorml</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>RL</td>
-      <td>Pave</td>
-      <td>NaN</td>
-      <td>IR1</td>
-      <td>Lvl</td>
-      <td>AllPub</td>
-      <td>FR2</td>
-      <td>Gtl</td>
-      <td>NoRidge</td>
-      <td>Norm</td>
-      <td>...</td>
-      <td>Attchd</td>
-      <td>RFn</td>
-      <td>TA</td>
-      <td>TA</td>
-      <td>Y</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>WD</td>
-      <td>Normal</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 43 columns</p>
-</div>
-
-
+MSZoning|Street|Alley|LotShape|LandContour|Utilities|LotConfig|LandSlope|Neighborhood|Condition1|Condition2|BldgType|HouseStyle|RoofStyle|RoofMatl|Exterior1st|Exterior2nd|MasVnrType|ExterQual|ExterCond|Foundation|BsmtQual|BsmtCond|BsmtExposure|BsmtFinType1|BsmtFinType2|Heating|HeatingQC|CentralAir|Electrical|KitchenQual|Functional|FireplaceQu|GarageType|GarageFinish|GarageQual|GarageCond|PavedDrive|PoolQC|Fence|MiscFeature|SaleType|SaleCondition
+---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+RL|Pave||Reg|Lvl|AllPub|Inside|Gtl|CollgCr|Norm|Norm|1Fam|2Story|Gable|CompShg|VinylSd|VinylSd|BrkFace|Gd|TA|PConc|Gd|TA|No|GLQ|Unf|GasA|Ex|Y|SBrkr|Gd|Typ||Attchd|RFn|TA|TA|Y||||WD|Normal
+RL|Pave||Reg|Lvl|AllPub|FR2|Gtl|Veenker|Feedr|Norm|1Fam|1Story|Gable|CompShg|MetalSd|MetalSd|None|TA|TA|CBlock|Gd|TA|Gd|ALQ|Unf|GasA|Ex|Y|SBrkr|TA|Typ|TA|Attchd|RFn|TA|TA|Y||||WD|Normal
+RL|Pave||IR1|Lvl|AllPub|Inside|Gtl|CollgCr|Norm|Norm|1Fam|2Story|Gable|CompShg|VinylSd|VinylSd|BrkFace|Gd|TA|PConc|Gd|TA|Mn|GLQ|Unf|GasA|Ex|Y|SBrkr|Gd|Typ|TA|Attchd|RFn|TA|TA|Y||||WD|Normal
+RL|Pave||IR1|Lvl|AllPub|Corner|Gtl|Crawfor|Norm|Norm|1Fam|2Story|Gable|CompShg|Wd Sdng|Wd Shng|None|TA|TA|BrkTil|TA|Gd|No|ALQ|Unf|GasA|Gd|Y|SBrkr|Gd|Typ|Gd|Detchd|Unf|TA|TA|Y||||WD|Abnorml
+RL|Pave||IR1|Lvl|AllPub|FR2|Gtl|NoRidge|Norm|Norm|1Fam|2Story|Gable|CompShg|VinylSd|VinylSd|BrkFace|Gd|TA|PConc|Gd|TA|Av|GLQ|Unf|GasA|Ex|Y|SBrkr|Gd|Typ|TA|Attchd|RFn|TA|TA|Y||||WD|Normal
 
 Now we have to convert this categorical data into numerical data. This is done using the pandas `.get_dummies(data)` function, which basically makes a new column for each categorical variable in a given column, and puts a value of 1 if that category is present for that row. The down side of doing this is the number of variables then blows up, which we will deal with later during feature selection.
 
@@ -1023,185 +266,16 @@ If you did it right you should now have 290 columns.
 
 
 ```python
-#Code your solution here
+#Code your solution here, it should have the following output
 ```
 
-
-```python
-#Don't alter this cell so you can see what your answer should look like.
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Id</th>
-      <th>MSSubClass</th>
-      <th>LotFrontage</th>
-      <th>LotArea</th>
-      <th>OverallQual</th>
-      <th>OverallCond</th>
-      <th>YearBuilt</th>
-      <th>YearRemodAdd</th>
-      <th>MasVnrArea</th>
-      <th>BsmtFinSF1</th>
-      <th>...</th>
-      <th>SaleType_ConLw</th>
-      <th>SaleType_New</th>
-      <th>SaleType_Oth</th>
-      <th>SaleType_WD</th>
-      <th>SaleCondition_Abnorml</th>
-      <th>SaleCondition_AdjLand</th>
-      <th>SaleCondition_Alloca</th>
-      <th>SaleCondition_Family</th>
-      <th>SaleCondition_Normal</th>
-      <th>SaleCondition_Partial</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>60</td>
-      <td>65.0</td>
-      <td>8450</td>
-      <td>7</td>
-      <td>5</td>
-      <td>2003</td>
-      <td>2003</td>
-      <td>196.0</td>
-      <td>706</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>20</td>
-      <td>80.0</td>
-      <td>9600</td>
-      <td>6</td>
-      <td>8</td>
-      <td>1976</td>
-      <td>1976</td>
-      <td>0.0</td>
-      <td>978</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>60</td>
-      <td>68.0</td>
-      <td>11250</td>
-      <td>7</td>
-      <td>5</td>
-      <td>2001</td>
-      <td>2002</td>
-      <td>162.0</td>
-      <td>486</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>70</td>
-      <td>60.0</td>
-      <td>9550</td>
-      <td>7</td>
-      <td>5</td>
-      <td>1915</td>
-      <td>1970</td>
-      <td>0.0</td>
-      <td>216</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>60</td>
-      <td>84.0</td>
-      <td>14260</td>
-      <td>8</td>
-      <td>5</td>
-      <td>2000</td>
-      <td>2000</td>
-      <td>350.0</td>
-      <td>655</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 290 columns</p>
-</div>
-
-
+Id|MSSubClass|LotFrontage|LotArea|OverallQual|OverallCond|YearBuilt|YearRemodAdd|MasVnrArea|BsmtFinSF1|BsmtFinSF2|BsmtUnfSF|TotalBsmtSF|1stFlrSF|2ndFlrSF|LowQualFinSF|GrLivArea|BsmtFullBath|BsmtHalfBath|FullBath|HalfBath|BedroomAbvGr|KitchenAbvGr|TotRmsAbvGrd|Fireplaces|GarageYrBlt|GarageCars|GarageArea|WoodDeckSF|OpenPorchSF|EnclosedPorch|3SsnPorch|ScreenPorch|PoolArea|MiscVal|MoSold|YrSold|SalePrice|MSZoning_C (all)|MSZoning_FV|MSZoning_RH|MSZoning_RL|MSZoning_RM|Street_Grvl|Street_Pave|Alley_Grvl|Alley_Pave|LotShape_IR1|LotShape_IR2|LotShape_IR3|LotShape_Reg|LandContour_Bnk|LandContour_HLS|LandContour_Low|LandContour_Lvl|Utilities_AllPub|Utilities_NoSeWa|LotConfig_Corner|LotConfig_CulDSac|LotConfig_FR2|LotConfig_FR3|LotConfig_Inside|LandSlope_Gtl|LandSlope_Mod|LandSlope_Sev|Neighborhood_Blmngtn|Neighborhood_Blueste|Neighborhood_BrDale|Neighborhood_BrkSide|Neighborhood_ClearCr|Neighborhood_CollgCr|Neighborhood_Crawfor|Neighborhood_Edwards|Neighborhood_Gilbert|Neighborhood_IDOTRR|Neighborhood_MeadowV|Neighborhood_Mitchel|Neighborhood_NAmes|Neighborhood_NPkVill|Neighborhood_NWAmes|Neighborhood_NoRidge|Neighborhood_NridgHt|Neighborhood_OldTown|Neighborhood_SWISU|Neighborhood_Sawyer|Neighborhood_SawyerW|Neighborhood_Somerst|Neighborhood_StoneBr|Neighborhood_Timber|Neighborhood_Veenker|Condition1_Artery|Condition1_Feedr|Condition1_Norm|Condition1_PosA|Condition1_PosN|Condition1_RRAe|Condition1_RRAn|Condition1_RRNe|Condition1_RRNn|Condition2_Artery|Condition2_Feedr|Condition2_Norm|Condition2_PosA|Condition2_PosN|Condition2_RRAe|Condition2_RRAn|Condition2_RRNn|BldgType_1Fam|BldgType_2fmCon|BldgType_Duplex|BldgType_Twnhs|BldgType_TwnhsE|HouseStyle_1.5Fin|HouseStyle_1.5Unf|HouseStyle_1Story|HouseStyle_2.5Fin|HouseStyle_2.5Unf|HouseStyle_2Story|HouseStyle_SFoyer|HouseStyle_SLvl|RoofStyle_Flat|RoofStyle_Gable|RoofStyle_Gambrel|RoofStyle_Hip|RoofStyle_Mansard|RoofStyle_Shed|RoofMatl_ClyTile|RoofMatl_CompShg|RoofMatl_Membran|RoofMatl_Metal|RoofMatl_Roll|RoofMatl_Tar&Grv|RoofMatl_WdShake|RoofMatl_WdShngl|Exterior1st_AsbShng|Exterior1st_AsphShn|Exterior1st_BrkComm|Exterior1st_BrkFace|Exterior1st_CBlock|Exterior1st_CemntBd|Exterior1st_HdBoard|Exterior1st_ImStucc|Exterior1st_MetalSd|Exterior1st_Plywood|Exterior1st_Stone|Exterior1st_Stucco|Exterior1st_VinylSd|Exterior1st_Wd Sdng|Exterior1st_WdShing|Exterior2nd_AsbShng|Exterior2nd_AsphShn|Exterior2nd_Brk Cmn|Exterior2nd_BrkFace|Exterior2nd_CBlock|Exterior2nd_CmentBd|Exterior2nd_HdBoard|Exterior2nd_ImStucc|Exterior2nd_MetalSd|Exterior2nd_Other|Exterior2nd_Plywood|Exterior2nd_Stone|Exterior2nd_Stucco|Exterior2nd_VinylSd|Exterior2nd_Wd Sdng|Exterior2nd_Wd Shng|MasVnrType_BrkCmn|MasVnrType_BrkFace|MasVnrType_None|MasVnrType_Stone|ExterQual_Ex|ExterQual_Fa|ExterQual_Gd|ExterQual_TA|ExterCond_Ex|ExterCond_Fa|ExterCond_Gd|ExterCond_Po|ExterCond_TA|Foundation_BrkTil|Foundation_CBlock|Foundation_PConc|Foundation_Slab|Foundation_Stone|Foundation_Wood|BsmtQual_Ex|BsmtQual_Fa|BsmtQual_Gd|BsmtQual_TA|BsmtCond_Fa|BsmtCond_Gd|BsmtCond_Po|BsmtCond_TA|BsmtExposure_Av|BsmtExposure_Gd|BsmtExposure_Mn|BsmtExposure_No|BsmtFinType1_ALQ|BsmtFinType1_BLQ|BsmtFinType1_GLQ|BsmtFinType1_LwQ|BsmtFinType1_Rec|BsmtFinType1_Unf|BsmtFinType2_ALQ|BsmtFinType2_BLQ|BsmtFinType2_GLQ|BsmtFinType2_LwQ|BsmtFinType2_Rec|BsmtFinType2_Unf|Heating_Floor|Heating_GasA|Heating_GasW|Heating_Grav|Heating_OthW|Heating_Wall|HeatingQC_Ex|HeatingQC_Fa|HeatingQC_Gd|HeatingQC_Po|HeatingQC_TA|CentralAir_N|CentralAir_Y|Electrical_FuseA|Electrical_FuseF|Electrical_FuseP|Electrical_Mix|Electrical_SBrkr|KitchenQual_Ex|KitchenQual_Fa|KitchenQual_Gd|KitchenQual_TA|Functional_Maj1|Functional_Maj2|Functional_Min1|Functional_Min2|Functional_Mod|Functional_Sev|Functional_Typ|FireplaceQu_Ex|FireplaceQu_Fa|FireplaceQu_Gd|FireplaceQu_Po|FireplaceQu_TA|GarageType_2Types|GarageType_Attchd|GarageType_Basment|GarageType_BuiltIn|GarageType_CarPort|GarageType_Detchd|GarageFinish_Fin|GarageFinish_RFn|GarageFinish_Unf|GarageQual_Ex|GarageQual_Fa|GarageQual_Gd|GarageQual_Po|GarageQual_TA|GarageCond_Ex|GarageCond_Fa|GarageCond_Gd|GarageCond_Po|GarageCond_TA|PavedDrive_N|PavedDrive_P|PavedDrive_Y|PoolQC_Ex|PoolQC_Fa|PoolQC_Gd|Fence_GdPrv|Fence_GdWo|Fence_MnPrv|Fence_MnWw|MiscFeature_Gar2|MiscFeature_Othr|MiscFeature_Shed|MiscFeature_TenC|SaleType_COD|SaleType_CWD|SaleType_Con|SaleType_ConLD|SaleType_ConLI|SaleType_ConLw|SaleType_New|SaleType_Oth|SaleType_WD|SaleCondition_Abnorml|SaleCondition_AdjLand|SaleCondition_Alloca|SaleCondition_Family|SaleCondition_Normal|SaleCondition_Partial
+---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+1|60|65.0|8450|7|5|2003|2003|196.0|706|0|150|856|856|854|0|1710|1|0|2|1|3|1|8|0|2003.0|2|548|0|61|0|0|0|0|0|2|2008|208500|0|0|0|1|0|0|1|0|0|0|0|0|1|0|0|0|1|1|0|0|0|0|0|1|1|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|1|0|0|0|1|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|1|0|0|0|0|1|0|0|0|0|0|1|0|0|1|0|0|0|0|0|1|0|0|0|0|1|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|1|0|1|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|1|0|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|1|0
+2|20|80.0|9600|6|8|1976|1976|0.0|978|0|284|1262|1262|0|0|1262|0|1|2|0|3|1|6|1|1976.0|2|460|298|0|0|0|0|0|0|5|2007|181500|0|0|0|1|0|0|1|0|0|0|0|0|1|0|0|0|1|1|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|1|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|0|0|1|0|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|1|0|0|0|0|1|0|0|0|0|1|0|1|0|0|0|0|0|0|1|0|0|0|0|1|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0|1|0|1|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|1|0|0|0|1|0|0|0|0|0|0|1|0|0|0|0|1|0|1|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|1|0
+3|60|68.0|11250|7|5|2001|2002|162.0|486|0|434|920|920|866|0|1786|1|0|2|1|3|1|6|1|2001.0|2|608|0|42|0|0|0|0|0|9|2008|223500|0|0|0|1|0|0|1|0|0|1|0|0|0|0|0|0|1|1|0|0|0|0|0|1|1|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|1|0|0|0|1|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|1|0|0|0|0|1|0|0|0|0|0|1|0|0|1|0|0|0|0|0|1|0|0|0|0|1|0|0|1|0|0|0|1|0|0|0|0|0|0|0|0|1|0|1|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|1|0|0|0|0|1|0|1|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|1|0
+4|70|60.0|9550|7|5|1915|1970|0.0|216|0|540|756|961|756|0|1717|1|0|1|0|3|1|7|1|1998.0|3|642|0|35|272|0|0|0|0|2|2006|140000|0|0|0|1|0|0|1|0|0|1|0|0|0|0|0|0|1|1|0|1|0|0|0|0|1|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|1|0|0|0|1|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|1|0|0|0|0|1|0|0|0|0|1|1|0|0|0|0|0|0|0|0|1|0|1|0|0|0|0|0|1|1|0|0|0|0|0|0|0|0|0|0|1|0|1|0|0|0|0|0|0|1|0|0|0|1|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|1|0|0|1|0|0|0|0|1|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|1|0|0|0|0|0
+5|60|84.0|14260|8|5|2000|2000|350.0|655|0|490|1145|1145|1053|0|2198|1|0|2|1|4|1|9|1|2000.0|3|836|192|84|0|0|0|0|0|12|2008|250000|0|0|0|1|0|0|1|0|0|1|0|0|0|0|0|0|1|1|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|1|0|0|0|1|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|1|0|0|0|0|1|0|0|0|0|0|1|0|0|1|0|0|0|0|0|1|0|0|0|0|1|1|0|0|0|0|0|1|0|0|0|0|0|0|0|0|1|0|1|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|1|0|0|0|0|1|0|1|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|1|0
 
 ## FEATURE SELECTION 
 
@@ -1209,16 +283,11 @@ Now that we've engineered our features, we should create a dataframe or series t
 
 
 ```python
-#Code your solution here
+#Code your solution here, it should have the following output
 ```
 
 
-```python
-#Don't alter this cell so you can see what your answer should look like.
-```
-
-
-![png](output_30_0.png)
+![png](output_27_0.png)
 
 
     Max Correlation:  1.0
@@ -1298,7 +367,7 @@ Using the series of correlation coefficients just made, select all the ones with
 
 
 ```python
-#Code your solution here.
+#Code your solution here, it should have the following output
 ```
 
 
@@ -1312,116 +381,111 @@ Now lets scatter plot each key feature compared to the sale price. This will all
 
 
 ```python
-#Code your solution here.
+#Code your solution here, it should have the following output
 ```
 
 
-```python
-#Don't alter this cell so you can see what your answer should look like.
-```
+![png](output_31_0.png)
 
 
-![png](output_35_0.png)
 
+![png](output_31_1.png)
 
 
-![png](output_35_1.png)
 
+![png](output_31_2.png)
 
 
-![png](output_35_2.png)
 
+![png](output_31_3.png)
 
 
-![png](output_35_3.png)
 
+![png](output_31_4.png)
 
 
-![png](output_35_4.png)
 
+![png](output_31_5.png)
 
 
-![png](output_35_5.png)
 
+![png](output_31_6.png)
 
 
-![png](output_35_6.png)
 
+![png](output_31_7.png)
 
 
-![png](output_35_7.png)
 
+![png](output_31_8.png)
 
 
-![png](output_35_8.png)
 
+![png](output_31_9.png)
 
 
-![png](output_35_9.png)
 
+![png](output_31_10.png)
 
 
-![png](output_35_10.png)
 
+![png](output_31_11.png)
 
 
-![png](output_35_11.png)
 
+![png](output_31_12.png)
 
 
-![png](output_35_12.png)
 
+![png](output_31_13.png)
 
 
-![png](output_35_13.png)
 
+![png](output_31_14.png)
 
 
-![png](output_35_14.png)
 
+![png](output_31_15.png)
 
 
-![png](output_35_15.png)
 
+![png](output_31_16.png)
 
 
-![png](output_35_16.png)
 
+![png](output_31_17.png)
 
 
-![png](output_35_17.png)
 
+![png](output_31_18.png)
 
 
-![png](output_35_18.png)
 
+![png](output_31_19.png)
 
 
-![png](output_35_19.png)
 
+![png](output_31_20.png)
 
 
-![png](output_35_20.png)
 
+![png](output_31_21.png)
 
 
-![png](output_35_21.png)
 
+![png](output_31_22.png)
 
 
-![png](output_35_22.png)
 
+![png](output_31_23.png)
 
 
-![png](output_35_23.png)
 
+![png](output_31_24.png)
 
 
-![png](output_35_24.png)
 
-
-
-![png](output_35_25.png)
+![png](output_31_25.png)
 
 
 Its very obvious that some of these features are very skewed. Moreover, the magnitude of some of the features are on significantly different scales. For example, the values for `GarageFinish_Unf` have a range of 0 and 1, but the feature `GarageYrBuilt` ranges from 1900 to 2010. Machine learning models work best with unskewed data which is all on a similar scale.
@@ -1437,11 +501,6 @@ Do this in several steps:
 #Code your solution here
 ```
 
-
-```python
-#Don't alter this cell so you can see what your answer should look like.
-```
-
 And what about our target variable, the `SalePrice`? Should it be transformed as well?
 Using the `seaborn` function `.distplot(data,fit=norm)`, plot the sale price. Below it, plot the `stats.probplot(data,plot=plt)` as well and see what it looks like. Make you have imported all the right things.
 
@@ -1451,40 +510,30 @@ This accomplishes two tasks:
 
 
 ```python
-#Code your solution here
+#Code your solution here, it should have the following output
 ```
 
 
-```python
-#Don't alter this cell so you can see what your answer should look like.
-```
-
-
-![png](output_41_0.png)
+![png](output_35_0.png)
 
 
 
-![png](output_41_1.png)
+![png](output_35_1.png)
 
 
 Now do the same thing again, but transform the `SalePrice` data with the function `np.log1p(data)`.
 
 
 ```python
-#Code your solution here
+#Code your solution here, it should have the following output
 ```
 
 
-```python
-#Don't alter this cell so you can see what your answer should look like.
-```
-
-
-![png](output_44_0.png)
+![png](output_37_0.png)
 
 
 
-![png](output_44_1.png)
+![png](output_37_1.png)
 
 
 As we can see the transformation of `np.log1p(y)` makes our SalePrice data much more normal and minimizes skew. This is better for linear regression.
@@ -1510,19 +559,14 @@ If you did everything right, it should the plots should look like the next one:
 
 
 ```python
-#Code your solution here.
-```
-
-
-```python
-#Don't alter this cell so you can see what your answer should look like.
+#Code your solution here, it should have the following output
 ```
 
     Best alpha for ridge is:  62.6530612244898
 
 
 
-![png](output_48_1.png)
+![png](output_40_1.png)
 
 
 # MODEL DEPLOYMENT AND TESTING
@@ -1537,36 +581,26 @@ Heres what we do next:
 
 
 ```python
-#Code your solution here.
-```
-
-
-```python
-#Don't alter this cell so you can see what your answer should look like.
+#Code your solution here, it should have the following output
 ```
 
     If you did it correctly, your plot should looks like this:
 
 
 
-![png](output_51_1.png)
+![png](output_42_1.png)
 
 
 
 ```python
-#Code your solution here.
-```
-
-
-```python
-#Don't alter this cell so you can see what your answer should look like.
+#Code your solution here, it should have the following output
 ```
 
     Your plot should look like this:
 
 
 
-![png](output_53_1.png)
+![png](output_43_1.png)
 
 
 Lastly, make a horizontal bar plot of the coefficients in the ridge model.
@@ -1574,19 +608,14 @@ Lastly, make a horizontal bar plot of the coefficients in the ridge model.
 
 
 ```python
-#Code your solution here.
-```
-
-
-```python
-#Don't alter this cell so you can see what your answer should look like.
+#Code your solution here, it should have the following output
 ```
 
     Your plot should look like this.
 
 
 
-![png](output_56_1.png)
+![png](output_45_1.png)
 
 
 # Sources & Credits

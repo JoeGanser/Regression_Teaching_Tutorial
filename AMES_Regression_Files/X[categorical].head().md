@@ -1,0 +1,7 @@
+MSZoning|Street|Alley|LotShape|LandContour|Utilities|LotConfig|LandSlope|Neighborhood|Condition1|Condition2|BldgType|HouseStyle|RoofStyle|RoofMatl|Exterior1st|Exterior2nd|MasVnrType|ExterQual|ExterCond|Foundation|BsmtQual|BsmtCond|BsmtExposure|BsmtFinType1|BsmtFinType2|Heating|HeatingQC|CentralAir|Electrical|KitchenQual|Functional|FireplaceQu|GarageType|GarageFinish|GarageQual|GarageCond|PavedDrive|PoolQC|Fence|MiscFeature|SaleType|SaleCondition
+---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+RL|Pave||Reg|Lvl|AllPub|Inside|Gtl|CollgCr|Norm|Norm|1Fam|2Story|Gable|CompShg|VinylSd|VinylSd|BrkFace|Gd|TA|PConc|Gd|TA|No|GLQ|Unf|GasA|Ex|Y|SBrkr|Gd|Typ||Attchd|RFn|TA|TA|Y||||WD|Normal
+RL|Pave||Reg|Lvl|AllPub|FR2|Gtl|Veenker|Feedr|Norm|1Fam|1Story|Gable|CompShg|MetalSd|MetalSd|None|TA|TA|CBlock|Gd|TA|Gd|ALQ|Unf|GasA|Ex|Y|SBrkr|TA|Typ|TA|Attchd|RFn|TA|TA|Y||||WD|Normal
+RL|Pave||IR1|Lvl|AllPub|Inside|Gtl|CollgCr|Norm|Norm|1Fam|2Story|Gable|CompShg|VinylSd|VinylSd|BrkFace|Gd|TA|PConc|Gd|TA|Mn|GLQ|Unf|GasA|Ex|Y|SBrkr|Gd|Typ|TA|Attchd|RFn|TA|TA|Y||||WD|Normal
+RL|Pave||IR1|Lvl|AllPub|Corner|Gtl|Crawfor|Norm|Norm|1Fam|2Story|Gable|CompShg|Wd Sdng|Wd Shng|None|TA|TA|BrkTil|TA|Gd|No|ALQ|Unf|GasA|Gd|Y|SBrkr|Gd|Typ|Gd|Detchd|Unf|TA|TA|Y||||WD|Abnorml
+RL|Pave||IR1|Lvl|AllPub|FR2|Gtl|NoRidge|Norm|Norm|1Fam|2Story|Gable|CompShg|VinylSd|VinylSd|BrkFace|Gd|TA|PConc|Gd|TA|Av|GLQ|Unf|GasA|Ex|Y|SBrkr|Gd|Typ|TA|Attchd|RFn|TA|TA|Y||||WD|Normal
