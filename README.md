@@ -30,28 +30,21 @@ Lets start by loading the dataset, and observing it's dimensions. Our target var
 
 
 ```python
-#Solution
-import pandas as pd
-import warnings
-warnings.filterwarnings('ignore')
-df = pd.read_csv('train.csv')
+#Code your solution here, it should have the following ouput
 ```
 
 Now split the data set into a predictor table (`X`) and a target table `y`
 
 
 ```python
-#Solution
-X = df.drop('SalePrice',axis=1)
-y = df['SalePrice']
+#Code your solution here, it should have the following output
 ```
 
 Now look at the head of the predictor table, and print it's shape.
 
 
 ```python
-#Solution
-print(X.shape)
+#Code your solution here, it should have the following output
 ```
 
     (1460, 80)
@@ -71,7 +64,7 @@ Now use the `.info()` method to find that datatypes on all of the columns (inclu
 
 
 ```python
-df.info()
+#Code your solution here, it should have the following output
 ```
 
     <class 'pandas.core.frame.DataFrame'>
@@ -166,7 +159,7 @@ Now use the `.describe()` method on the full data set to get the min,max,mean an
 
 
 ```python
-#Code your solution here. It should look like the following;
+#Code your solution here. It should have the following output;
 ```
 
 count|mean|std|min|25%|50%|75%|max
